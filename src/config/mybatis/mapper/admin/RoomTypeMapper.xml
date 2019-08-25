@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.ischoolbar.programmer.dao.admin.RoomTypeDao">
+	
+	<!-- 楼层插入操作 -->
+	<insert id="add" parameterType="com.ischoolbar.programmer.entity.admin.RoomType">
+		insert into roomtype(id,name,price,liveNum,bedNum,roomNum,avilableNum,status) values(#{name},#{price},#{liveNum},#{bedNum},#{roomNum},#{avilableNum},#{status})
+	</insert>
+	<update id="edit" parameterType="com.ischoolbar.programmer.entity.admin.RoomType">
+		update floor set name = #{name},remark = #{remark} where id = #{id}
+	</update>
+</mapper>
