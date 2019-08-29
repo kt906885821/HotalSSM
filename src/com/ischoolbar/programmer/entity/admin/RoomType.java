@@ -18,7 +18,14 @@ public class RoomType {
 	private Integer bedNum;
 	private Integer roomNum;
 	private Integer avilableNum;
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 	private Integer status;
+	private String remark;
 	public Long getId() {
 		return id;
 	}

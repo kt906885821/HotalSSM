@@ -19,8 +19,12 @@ public interface RoomTypeService {
 	
 	public int edit(RoomType roomType);
 	
-	public int delete(RoomType roomType);
+	public int delete(Long id);
 	
 	public List<RoomType> findList(Map<String, Object> queryMap);
+	
+	public List<RoomType> getTotal(Map<String, Object> queryMap);
+	
+	public List<RoomType> findAll();
 	
 }

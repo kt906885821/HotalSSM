@@ -6,9 +6,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 楼层插入操作 -->
 	<insert id="add" parameterType="com.ischoolbar.programmer.entity.admin.RoomType">
-		insert into roomtype(id,name,price,liveNum,bedNum,roomNum,avilableNum,status) values(#{name},#{price},#{liveNum},#{bedNum},#{roomNum},#{avilableNum},#{status})
+		insert into room_type(id,name,price,liveNum,bedNum,roomNum,avilableNum,status,remark) values(#{name},#{price},#{liveNum},#{bedNum},#{roomNum},#{avilableNum},#{status},#{remark})
 	</insert>
 	<update id="edit" parameterType="com.ischoolbar.programmer.entity.admin.RoomType">
-		update floor set name = #{name},remark = #{remark} where id = #{id}
+		update room_type set name = #{name},price = #{price},liveNum = #{liveNum},bedNum = #{bedNum} where id = #{id}
 	</update>
+	<!-- 房间类型搜索条件 -->
+	<select id="findList" parameterType="Map" resultType="com.ischoolbar.programmer.entity.admin.RoomType">
+		select * from room_type where 1 = 1
+		<if test="name != null">
+			where name like '%${name}%'
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		<if test="offset" != null and pageSize != null>
+			limit #{offset},#{pageSize}
+		</if>
+	</select>
+	<!-- 获取所有房间类型信息 -->
+	<select id="findAll" parameterType="Map" resultType="com.ischoolbar.programmer.entity.admin.RoomType">
+		select * from room_type
+	</select>
+	<!-- 模糊搜索总条数 -->
+	<select id="getTotal" parameterType="Map" resultType="Integer">
+		select count(1) from room_type where 1=1
+		<if test="name != null">
+			where name like '%${name}%'
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+	</select>
+	<delete id="delete" parameterType="Long" resultType="Integer">
+		delete from room_type where id = #{id}
+	
+	</delete>
 </mapper>

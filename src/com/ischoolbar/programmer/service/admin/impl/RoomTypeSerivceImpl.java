@@ -29,9 +29,9 @@ public class RoomTypeSerivceImpl implements RoomTypeService {
 	}
 
 	@Override
-	public int delete(RoomType roomType) {
+	public int delete(Long id) {
 		// TODO Auto-generated method stub
-		return roomTypeDao.delete(roomType);
+		return roomTypeDao.delete(id);
 	}
 
 	@Override
@@ -39,6 +39,18 @@ public class RoomTypeSerivceImpl implements RoomTypeService {
 		// TODO Auto-generated method stub
 		return roomTypeDao.findList(queryMap);
 
+	}
+
+	@Override
+	public List<RoomType> getTotal(Map<String, Object> queryMap) {
+		// TODO Auto-generated method stub
+		return roomTypeDao.getTotal(queryMap);
+	}
+
+	@Override
+	public List<RoomType> findAll() {
+		// TODO Auto-generated method stub
+		return roomTypeDao.findAll();
 	}
 
 }
